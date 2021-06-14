@@ -97,29 +97,53 @@
             $("#QRCode").css("opacity", 0);
             
             var options={};
-            var text = $("#url").val();
-            if(text.length<=0){
-                text="https://www.beto.com.tw/";
-            }else{
-                text=text;
+            options.data = $("#url").val();
+            if(options.data.length<=0){
+                options.data="https://www.beto.com.tw/";
             }
-            generateQR(text);
+            try { // statements to try
+                options.eCL = 'H';
+                generateQR(options);
+            }
+            catch (e) {
+                try { // statements to try
+                    options.eCL = 'Q';
+                    generateQR(options);
+                }
+                catch (e) {
+                    try { // statements to try
+                        options.eCL = 'M';
+                        generateQR(options);
+                    }
+                    catch (e) {
+                        try { // statements to try
+                            options.eCL = 'L';
+                            generateQR(options);
+                        }
+                        catch (e) {
+                            console.log("[Error]", e)
+                        }
+                    }
+                }
+            }
+            
             $("#QRCode").css({
                 "opacity": 1
             });
         }
 
-        generateQR = function (data) {
-            console.log("data", data);
+        generateQR = function (options) {
+            console.log("data", options.data);
+            console.log("data.len", options.data.length);
             qrCode.update({
                 width: 350,
                 height: 350,
                 type: "canvas",
-                data: data,
+                data: options.data,
                 image: "./img/beto_logo.png",
                 qrOptions: {
                     typeNumber: 5,
-                    errorCorrectionLevel: "H"
+                    errorCorrectionLevel: options.eCL
                 },
                 dotsOptions: {
                     color: "#fff",
