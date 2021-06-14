@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400&display=swap" rel="stylesheet">
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        html, body {
+            background-color: #f1f3f4;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar-brand-beto {
+            width: 100%;
+            background-color: #00254d;
+            padding: 0;
+            margin: 0;
+        }
+
+        .main {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .QRCode {
+            transition: opacity 0.5 linear;
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar-brand-beto">
+        <div class="container d-flex justify-content-center">
+            <a>
+                <img src="./img/beto_logo.png" alt="" width="220" height="88">
+            </a>
+        </div>
+    </header>
+    <div class="main">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-10 col-lg-8 col-xl-6 pt-4 d-flex justify-content-center">
+                    <div class="input-group">
+                        <span class="input-group-text">網址</span>
+                        <textarea id="url" class="form-control"  placeholder="https://www.beto.com.tw/" aria-label="https://www.beto.com.tw/" aria-label="URL"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-12 d-flex pt-2 justify-content-center">
+                    <button id="GenerateQR-btn" class="btn btn-primary">生成QR Code</button>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-6 pt-2 d-flex justify-content-center">
+                    <div class="row justify-content-center">
+                        <div id="QRCode" class="rounded col-12" style="transition: opacity 0.25 linear;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-12 d-flex pt-2 justify-content-center">
+                    <button id="DownloadQR-btn" class="btn btn-outline-danger">下載QR Code</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="./js/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/qr-code-styling.js"></script>
+    <script src="./js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script>
+        const qrCode = new QRCodeStyling();
+
+        document.addEventListener("DOMContentLoaded", function(){
+            console.log("Loaded");
+            pre_generateQR();
+            $("#GenerateQR-btn").on("click", function(){ 
+                pre_generateQR();
+            });
+            $("#DownloadQR-btn").on("click", function(){ 
+                downloadQR();
+            });
+        });
+
+        pre_generateQR = function() {
+            //document.getElementById("QRCode").getElementsByClassName("svg").remove();
+            console.log("tset")
+            $("#QRCode").css("opacity", 0);
+            
+            var options={};
+            var text = $("#url").val();
+            if(text.length<=0){
+                text="https://www.beto.com.tw/";
+            }else{
+                text=text;
+            }
+            generateQR(text);
+            $("#QRCode").css({
+                "opacity": 1
+            });
+        }
+
+        generateQR = function (data) {
+            console.log("data", data);
+            qrCode.update({
+                width: 350,
+                height: 350,
+                type: "canvas",
+                data: data,
+                image: "./img/beto_logo.png",
+                qrOptions: {
+                    typeNumber: 5,
+                    errorCorrectionLevel: "H"
+                },
+                dotsOptions: {
+                    color: "#fff",
+                    type: "dots"
+                },
+                backgroundOptions: {
+                    color: "#00254d",
+                },
+                imageOptions: {
+                    imageSize: 0.5,
+                    crossOrigin: "anonymous",
+                    margin: 3
+                },
+                cornersSquareOptions: {
+                    color: "#47a0ff",
+                    type: "extra-rounded"
+                },
+                cornersDotOptions: {
+                    color: "#47a0ff", 
+                    type: "rounded",
+                }
+            });
+            qrCode.append(document.getElementById("QRCode"));
+            // qrCode.download({ name: "qr", extension: "png" });
+        }
+
+        downloadQR = function() {
+            qrCode.download({ name: "qr", extension: "png" });
+        }
+    </script>
+</body>
+</html>
