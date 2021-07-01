@@ -50,8 +50,56 @@
                 <div class="col-12 col-md-10 col-lg-8 col-xl-6 pt-4 d-flex justify-content-center">
                     <div class="input-group">
                         <span class="input-group-text">網址</span>
-                        <textarea id="url" class="form-control"  placeholder="https://www.beto.com.tw/" aria-label="https://www.beto.com.tw/" aria-label="URL"></textarea>
+                        <textarea id="input-url" class="form-control"  placeholder="https://www.beto.com.tw/" aria-label="https://www.beto.com.tw/" aria-label="URL"></textarea>
                     </div>
+                    
+                </div>
+                <div class="col-12 col-md-10 col-lg-8 col-xl-6 pt-4 d-flex justify-content-center">
+                    <form class="row needs-validation" novalidate>
+                        <label for="MainOption" class="form-label">Main Option</label>
+                        <div class="col-md-4">
+                            <div class="input-group has-validation">
+                                <span class="input-group-text" id="inputGroupPrepend">Color</span>
+                                <input type="color" class="form-control form-control-color" id="input-DotsColor" value="#000" title="Dots Color">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group has-validation">
+                                <span class="input-group-text" id="inputGroupPrepend">Color</span>
+                                <input type="color" class="form-control form-control-color" id="input-DotsColor" value="#000" title="Dots Color">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group has-validation">
+                                <span class="input-group-text" id="inputGroupPrepend">Color</span>
+                                <input type="color" class="form-control form-control-color" id="input-DotsColor" value="#000" title="Dots Color">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-12 col-md-10 col-lg-8 col-xl-6 pt-4 d-flex justify-content-center">
+                    <form class="row needs-validation" novalidate>
+                        <label for="DotsStyle" class="form-label">Dots</label>
+                        <div class="col-md-8">
+                            <div class="input-group has-validation">
+                                <span class="input-group-text" id="inputGroupPrepend">Style</span>
+                                <select class="form-select" id="input-DotsStyle" required>
+                                    <option selected value="square">Square</option>
+                                    <option>Dots</option>
+                                    <option>Rounded</option>
+                                    <option>Extra Rounded</option>
+                                    <option>Classy</option>
+                                    <option>Classy Rounded</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group has-validation">
+                                <span class="input-group-text" id="inputGroupPrepend">Color</span>
+                                <input type="color" class="form-control form-control-color" id="input-DotsColor" value="#000" title="Dots Color">
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
             <div class="row justify-content-center">
@@ -82,6 +130,9 @@
 
         document.addEventListener("DOMContentLoaded", function(){
             console.log("Loaded");
+            let url = new URL(window.location);
+            set_inputParam(url);
+
             pre_generateQR();
             $("#GenerateQR-btn").on("click", function(){ 
                 pre_generateQR();
@@ -91,13 +142,21 @@
             });
         });
 
+        set_inputParam = function (url) {
+            let params = url.searchParams;
+            for (let pair of params.entries()) {
+                $(`#input-${pair[0]}`).val(pair[1]);
+                console.log(`key: ${pair[0]}, value: ${pair[1]}`);
+            }
+        }
+
         pre_generateQR = function() {
             //document.getElementById("QRCode").getElementsByClassName("svg").remove();
             console.log("tset")
             $("#QRCode").css("opacity", 0);
             
             var options={};
-            options.data = $("#url").val();
+            options.data = $("#input-url").val();
             if(options.data.length<=0){
                 options.data="https://www.beto.com.tw/";
             }
