@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400&display=swap" rel="stylesheet">
-    <link href="./css/bootstrap.min.css" rel="stylesheet">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,400&display=swap">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <title>BETO-Logo</title>
     <style>
         html, body {
-            background-color: #f1f3f4;
             padding: 0;
             margin: 0;
             display: flex;
@@ -31,6 +31,10 @@
             align-items: center;
         }
 
+        .options {
+            background-color: #c29ffa;
+        }
+
         .QRCode {
             transition: opacity 0.5 linear;
         }
@@ -44,67 +48,135 @@
             </a>
         </div>
     </header>
-    <div class="main">
+    <div class="main bg-white bg-gradient">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-10 col-lg-8 col-xl-6 pt-4 d-flex justify-content-center">
                     <div class="input-group">
-                        <span class="input-group-text">網址</span>
-                        <textarea id="input-url" class="form-control"  placeholder="https://www.beto.com.tw/" aria-label="https://www.beto.com.tw/" aria-label="URL"></textarea>
+                        <span class="input-group-text">Data</span>
+                        <textarea id="input-Data" class="form-control"  placeholder="https://www.beto.com.tw/" aria-label="https://www.beto.com.tw/" aria-label="URL"></textarea>
                     </div>
-                    
                 </div>
-                <div class="col-12 col-md-10 col-lg-8 col-xl-6 pt-4 d-flex justify-content-center">
-                    <form class="row needs-validation" novalidate>
-                        <label for="MainOption" class="form-label">Main Option</label>
-                        <div class="col-md-4">
-                            <div class="input-group has-validation">
-                                <span class="input-group-text" id="inputGroupPrepend">Color</span>
-                                <input type="color" class="form-control form-control-color" id="input-DotsColor" value="#000" title="Dots Color">
+            </div>
+            <div class="justify-content-center options mt-1 p-2">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-12 col-lg-8 col-xl-8 pt-1 d-flex justify-content-start">
+                        <label for="MainOption"><h4>Main Option</h4></label>
+                    </div>
+                    <div id="MainOption" class="col-12 col-md-12 col-lg-8 col-xl-8 pt-1 d-flex justify-content-center">
+                        <form class="row needs-validation g-2" novalidate>
+                            <div class="col-md-5">
+                                <div class="input-group">
+                                    <span class="input-group-text" id="inputGroupPrepend">BackGround Color</span>
+                                    <input type="color" class="form-control form-control-color" id="input-BackGroundColor" value="#000" title="Dots Color">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="input-group has-validation">
-                                <span class="input-group-text" id="inputGroupPrepend">Color</span>
-                                <input type="color" class="form-control form-control-color" id="input-DotsColor" value="#000" title="Dots Color">
+                            <div class="col-md-3">
+                                <div class="input-group">
+                                    <span class="input-group-text" id="inputGroupPrepend">Width</span>
+                                    <input type="number" class="form-control" id="input-Width" title="Width">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="input-group has-validation">
-                                <span class="input-group-text" id="inputGroupPrepend">Color</span>
-                                <input type="color" class="form-control form-control-color" id="input-DotsColor" value="#000" title="Dots Color">
+                            <div class="col-md-3">
+                                <div class="input-group">
+                                    <span class="input-group-text" id="inputGroupPrepend">Height</span>
+                                    <input type="number" class="form-control" id="input-Height" title="Height">
+                                </div>
                             </div>
-                        </div>
-                    </form>
+                            <div class="col-md-3">
+                                <div class="input-group">
+                                    <span class="input-group-text" id="inputGroupPrepend">Logo</span>
+                                    <select class="form-select" id="select-Logo" required>
+                                        <option selected value="square">1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <div class="col-12 col-md-10 col-lg-8 col-xl-6 pt-4 d-flex justify-content-center">
-                    <form class="row needs-validation" novalidate>
-                        <label for="DotsStyle" class="form-label">Dots</label>
-                        <div class="col-md-8">
-                            <div class="input-group has-validation">
-                                <span class="input-group-text" id="inputGroupPrepend">Style</span>
-                                <select class="form-select" id="input-DotsStyle" required>
-                                    <option selected value="square">Square</option>
-                                    <option>Dots</option>
-                                    <option>Rounded</option>
-                                    <option>Extra Rounded</option>
-                                    <option>Classy</option>
-                                    <option>Classy Rounded</option>
-                                </select>
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-12 col-lg-8 col-xl-8 pt-4 d-flex justify-content-start">
+                        <label for="DotsOption"><h4>Dots</h4></label>
+                    </div>
+                    <div id="DotsOption" class="col-12 col-md-12 col-lg-8 col-xl-8 pt-1 d-flex justify-content-start">
+                        <form class="row col-12 needs-validation g-2" novalidate>
+                            <div class="col-md-5">
+                                <div class="input-group">
+                                    <span class="input-group-text" id="inputGroupPrepend">Style</span>
+                                    <select class="form-select" id="select-DotsStyle" required>
+                                        <option selected value="square">Square</option>
+                                        <option value="dots">Dots</option>
+                                        <option value="rounded">Rounded</option>
+                                        <option value="extra-rounded">Extra Rounded</option>
+                                        <option value="classy">Classy</option>
+                                        <option value="classy-rounded">Classy Rounded</option>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="input-group has-validation">
-                                <span class="input-group-text" id="inputGroupPrepend">Color</span>
-                                <input type="color" class="form-control form-control-color" id="input-DotsColor" value="#000" title="Dots Color">
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-text" id="inputGroupPrepend">Color</span>
+                                    <input type="color" class="form-control form-control-color" id="input-DotsColor" value="#000" title="Dots Color">
+                                </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-12 col-lg-8 col-xl-8 pt-4 d-flex justify-content-start">
+                        <label for="CornersSquareOption"><h4>Corners Square</h4></label>
+                    </div>
+                    <div class="col-12 col-md-12 col-lg-8 col-xl-8 pt-1 d-flex justify-content-start">
+                        <form class="row col-12 needs-validation g-2" novalidate>
+                            <div class="col-md-5">
+                                <div class="input-group">
+                                    <span class="input-group-text" id="inputGroupPrepend">Style</span>
+                                    <select class="form-select" id="select-CornersSquareStyle" required>
+                                        <option selected value="square">Square</option>
+                                        <option value="dots">Dots</option>
+                                        <option value="extra-rounded">Extra Rounded</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-text" id="inputGroupPrepend">Color</span>
+                                    <input type="color" class="form-control form-control-color" id="input-CornersSquareColor" value="#000" title="Dots Color">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-12 col-lg-8 col-xl-8 pt-4 d-flex justify-content-start">
+                        <label for="CornersDotOption"><h4>Corners Dot</h4></label>
+                    </div>
+                    <div class="col-12 col-md-12 col-lg-8 col-xl-8 pt-1 d-flex justify-content-start">
+                        <form class="row col-12 needs-validation g-2" novalidate>
+                            <div class="col-md-5">
+                                <div class="input-group">
+                                    <span class="input-group-text" id="inputGroupPrepend">Style</span>
+                                    <select class="form-select" id="select-CornersDotStyle" required>
+                                        <option selected value="square">Square</option>
+                                        <option value="dots">Dots</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-text" id="inputGroupPrepend">Color</span>
+                                    <input type="color" class="form-control form-control-color" id="input-CornersDotColor" value="#000" title="Dots Color">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
             <div class="row justify-content-center">
                 <div class="col-12 d-flex pt-2 justify-content-center">
-                    <button id="GenerateQR-btn" class="btn btn-primary">生成QR Code</button>
+                    <button id="button-QRGenerate" class="btn btn-success">生成 <i class="fas fa-qrcode"></i> Code</button>
                 </div>
             </div>
             <div class="row justify-content-center">
@@ -115,8 +187,19 @@
                 </div>
             </div>
             <div class="row justify-content-center">
-                <div class="col-12 d-flex pt-2 justify-content-center">
-                    <button id="DownloadQR-btn" class="btn btn-outline-danger">下載QR Code</button>
+                <div class="row col-12 col-md-12 col-lg-8 col-xl-8 d-flex pt-2 g-2 justify-content-center">
+                    <div class="col-md-2 justify-content-center">
+                        <div class="btn-group">
+                            <button id="button-QRShare" class="btn btn-primary"><i class="fas fa-share-alt"></i>分享</button>
+                        </div>
+                    </div>
+                    <div class="col-md-3 justify-content-center">
+                        <div class="input-group">
+                            <button id="button-QRDownload" class="btn btn-danger"><i class="fas fa-download"></i>下載</button>
+                            <select class="form-select btn btn-outline-danger" id="select-QRDoenloadType">
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -124,65 +207,39 @@
     
     <script type="text/javascript" src="./js/jquery.min.js"></script>
     <script type="text/javascript" src="./js/qr-code-styling.js"></script>
-    <script src="./js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="./js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script>
         const qrCode = new QRCodeStyling();
-
-        document.addEventListener("DOMContentLoaded", function(){
-            console.log("Loaded");
-            let url = new URL(window.location);
-            set_inputParam(url);
-
-            pre_generateQR();
-            $("#GenerateQR-btn").on("click", function(){ 
-                pre_generateQR();
-            });
-            $("#DownloadQR-btn").on("click", function(){ 
-                downloadQR();
-            });
-        });
-
-        set_inputParam = function (url) {
-            let params = url.searchParams;
-            for (let pair of params.entries()) {
-                $(`#input-${pair[0]}`).val(pair[1]);
-                console.log(`key: ${pair[0]}, value: ${pair[1]}`);
-            }
-        }
+        let url = new URL(window.location);
 
         pre_generateQR = function() {
-            //document.getElementById("QRCode").getElementsByClassName("svg").remove();
-            console.log("tset")
             $("#QRCode").css("opacity", 0);
             
+            var errorCorrectionLevelList = ["H", "Q", "M", "L"];
+
             var options={};
-            options.data = $("#input-url").val();
+            options.data = $("#input-Data").val();
             if(options.data.length<=0){
                 options.data="https://www.beto.com.tw/";
             }
-            try { // statements to try
-                options.eCL = 'H';
-                generateQR(options);
-            }
-            catch (e) {
-                try { // statements to try
-                    options.eCL = 'Q';
+            options.backgroundColor = $("#input-BackGroundColor").val();
+            options.width = $("#input-Width").val();
+            options.height = $("#input-Height").val();
+            options.image = $("#select-Logo").val();
+            options.dotsStyle = $("#select-DotsStyle").val();
+            options.dotsColor = $("#input-DotsColor").val();
+            options.cornersSquareStyle = $("#select-CornersSquareStyle").val();
+            options.cornersSquareColor = $("#input-CornersSquareColor").val();
+            options.cornersDotStyle = $("#select-CornersDotStyle").val();
+            options.cornersDotColor = $("#input-CornersDotColor").val();
+
+            for(var i in errorCorrectionLevelList){
+                try {
+                    options.eCL = errorCorrectionLevelList[i];
                     generateQR(options);
-                }
-                catch (e) {
-                    try { // statements to try
-                        options.eCL = 'M';
-                        generateQR(options);
-                    }
-                    catch (e) {
-                        try { // statements to try
-                            options.eCL = 'L';
-                            generateQR(options);
-                        }
-                        catch (e) {
-                            console.log("[Error]", e)
-                        }
-                    }
+                    break;
+                } catch(e){
+                    console.log("[Error]", e);
                 }
             }
             
@@ -192,24 +249,23 @@
         }
 
         generateQR = function (options) {
-            console.log("data", options.data);
-            console.log("data.len", options.data.length);
+            console.log("generateQR - options", options);
             qrCode.update({
-                width: 350,
-                height: 350,
+                width: options.width,
+                height: options.height,
                 type: "canvas",
                 data: options.data,
-                image: "./img/beto_logo.png",
+                image: options.image,
                 qrOptions: {
                     typeNumber: 5,
                     errorCorrectionLevel: options.eCL
                 },
                 dotsOptions: {
-                    color: "#fff",
-                    type: "dots"
+                    color: options.dotsColor,
+                    type: options.dotsStyle
                 },
                 backgroundOptions: {
-                    color: "#00254d",
+                    color: options.backgroundColor,
                 },
                 imageOptions: {
                     imageSize: 0.5,
@@ -217,20 +273,196 @@
                     margin: 3
                 },
                 cornersSquareOptions: {
-                    color: "#47a0ff",
-                    type: "extra-rounded"
+                    color: options.cornersSquareColor,
+                    type: options.cornersSquareStyle
                 },
                 cornersDotOptions: {
-                    color: "#47a0ff", 
-                    type: "rounded",
+                    color: options.cornersDotColor,
+                    type: options.cornersDotStyle
                 }
             });
             qrCode.append(document.getElementById("QRCode"));
-            // qrCode.download({ name: "qr", extension: "png" });
         }
 
         downloadQR = function() {
-            qrCode.download({ name: "qr", extension: "png" });
+            // console.log($("#select-QRDoenloadType").val());
+            qrCode.download({ name: "qr", extension: $("#select-QRDoenloadType").val() });
+        }
+
+        QRShare = function () {
+            console.log();
+            var newUrl = url.hostname + url.pathname + "?";
+            var uri = "?";
+            for(var i in items) {
+                console.log(items[i]);
+                if(items[i].type === "input" || items[i].type === "select"){
+                    uri += `${i}=${encodeURIComponent($(`#${items[i].type}-${i}`).val())}&`;
+                }
+            }
+            console.log(url + uri);
+        }
+
+        const items = {
+            "Data": {
+                type: "input", 
+                event: {
+                    "onchange": () => pre_generateQR,
+                }
+            }, 
+            "BackGroundColor": {
+                type: "input", 
+                definedValue: "#00254d",
+                event: {
+                    "onchange": () => pre_generateQR,
+                }
+            }, 
+            "Width": {
+                type: "input", 
+                definedValue: 350,
+                event: {
+                    "onchange": () => pre_generateQR,
+                }
+            }, 
+            "Height": {
+                type: "input", 
+                definedValue: 350,
+                event: {
+                    "onchange": () => pre_generateQR,
+                }
+            }, 
+            "Logo": {
+                type: "select", 
+                event: {
+                    "onchange": () => pre_generateQR,
+                },
+                options: {
+                    "無": null,
+                    "1": "./img/beto_logo.png",
+                    "2": "./img/beto_logo_W.png",
+                    "3": "./img/beto_logo2.png",
+                },
+            }, 
+            "DotsStyle": {
+                type: "select", 
+                definedValue: "dots",
+                event: {
+                    "onchange": () => pre_generateQR,
+                }
+            }, 
+            "DotsColor": {
+                type: "input", 
+                definedValue: "#ffffff",
+                event: {
+                    "onchange": () => pre_generateQR,
+                }
+            }, 
+            "CornersSquareStyle": {
+                type: "select", 
+                definedValue: "extra-rounded",
+                event: {
+                    "onchange": () => pre_generateQR,
+                }
+            }, 
+            "CornersSquareColor": {
+                type: "input", 
+                definedValue: "#47a0ff",
+                event: {
+                    "onchange": () => pre_generateQR,
+                }
+            }, 
+            "CornersDotStyle": {
+                type: "select", 
+                definedValue: "dots",
+                event: {
+                    "onchange": () => pre_generateQR,
+                }
+            }, 
+            "CornersDotColor": {
+                type: "input", 
+                definedValue: "#47a0ff",
+                event: {
+                    "onchange": () => pre_generateQR,
+                }
+            }, 
+            "QRGenerate": {
+                type: "button",
+                event: {
+                    "onclick": () => pre_generateQR,
+                },
+            },
+            "QRDownload": {
+                type: "button",
+                event: {
+                    "onclick": () => downloadQR,
+                },
+            },
+            "QRDoenloadType": {
+                type: "select",
+                options: {
+                    "Png": "png", 
+                    "Jpeg": "jpeg", 
+                    "Webp": "webp", 
+                    "Svg": "svg"
+                },
+            },
+            "QRShare": {
+                type: "button",
+                event: {
+                    "onclick": () => QRShare,
+                },
+            },
+        };
+
+        document.addEventListener("DOMContentLoaded", function(){
+            console.log("Loaded");
+
+            set_itemsSitting();
+            
+            set_urlParam(url);
+
+            set_itemsEvents();
+
+            pre_generateQR();
+        });
+
+        set_itemsSitting = function () {
+            for(var item_key in items) {
+                if(typeof items[item_key].definedValue !== "undefined") {
+                    // console.log("setValue", items[item_key].definedValue);
+                    $(`#${items[item_key].type}-${item_key}`).val(items[item_key].definedValue);
+                }
+                if(typeof items[item_key].options !== "undefined"){
+                    $(`#${items[item_key].type}-${item_key}`).empty();
+                    for(var key in items[item_key].options){
+                        $(`#${items[item_key].type}-${item_key}`).append(`<option value="${items[item_key].options[key]}">${key}</option>`)
+                    }
+                }
+            }
+        }
+
+        set_itemsEvents = function () {
+            for(var item_key in items) {
+                if(typeof items[item_key].event !== "undefined"){
+                    for(var event_key in items[item_key].event) {
+                        if(event_key === "onchange"){
+                            $(`#${items[item_key].type}-${item_key}`).on("change", items[item_key].event[event_key]());
+                        }else if(event_key === "onclick"){
+                            $(`#${items[item_key].type}-${item_key}`).on("click", items[item_key].event[event_key]());
+                        }
+                        // console.log(event_key, items[item_key].event[event_key])
+                    }
+                }
+            }
+        }
+
+        set_urlParam = function (url) {
+            let params = url.searchParams;
+            for (let pair of params.entries()) {
+                if(typeof items[pair[0]] !== "undefined"){
+                    // console.log(pair[0], pair[1])
+                    $(`#${items[pair[0]].type}-${pair[0]}`).val(pair[1]);
+                }
+            }
         }
     </script>
 </body>
