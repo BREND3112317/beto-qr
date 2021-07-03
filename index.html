@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BETO QR-Code Design">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,400&display=swap">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -36,7 +37,19 @@
         }
 
         .QRCode {
-            transition: opacity 0.5 linear;
+            transition: opacity 5s linear;
+        }
+
+        .btn-outline-indigo {
+            color: #7d5fff;
+            background-color: #fff;
+            border-color: #7d5fff;
+        }
+
+        .btn-outline-indigo:hover {
+            color: #fff;
+            background-color: #7d5fff;
+            border-color: #7d5fff;
         }
     </style>
 </head>
@@ -51,153 +64,235 @@
     <div class="main bg-white bg-gradient">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-12 col-md-10 col-lg-8 col-xl-6 pt-4 d-flex justify-content-center">
+                <div class="col-12 col-md-10 col-lg-8 col-xl-6 pt-4 justify-content-center">
                     <div class="input-group">
-                        <span class="input-group-text">Data</span>
+                        <!-- <button class="btn btn-primary"><i class="fas fa-paste"></i><br/>Paste</button> -->
+                        <span class="input-group-text bg-primary text-white" id="addon-wrapping">Data</span>
                         <textarea id="input-Data" class="form-control"  placeholder="https://www.beto.com.tw/" aria-label="https://www.beto.com.tw/" aria-label="URL"></textarea>
                     </div>
                 </div>
             </div>
-            <div class="justify-content-center options mt-1 p-2">
-                <div class="row justify-content-center">
-                    <div class="col-12 col-md-12 col-lg-8 col-xl-8 pt-1 d-flex justify-content-start">
-                        <label for="MainOption"><h4>Main Option</h4></label>
-                    </div>
-                    <div id="MainOption" class="col-12 col-md-12 col-lg-8 col-xl-8 pt-1 d-flex justify-content-center">
-                        <form class="row needs-validation g-2" novalidate>
-                            <div class="col-md-5">
-                                <div class="input-group">
-                                    <span class="input-group-text" id="inputGroupPrepend">BackGround Color</span>
-                                    <input type="color" class="form-control form-control-color" id="input-BackGroundColor" value="#000" title="Dots Color">
+            <div class="row justify-content-center">
+                <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-8 pt-1 justify-content-start">
+                    <div class="accordion" id="accordionOptions">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Main Options
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionOptions">
+                                <div class="accordion-body">
+                                    <form class="row needs-validation g-2" novalidate>
+                                        <div class="col-md-5">
+                                            <div class="input-group">
+                                                <span class="input-group-text" id="inputGroupPrepend">BackGround Color</span>
+                                                <input type="color" class="form-control form-control-color" id="input-BackGroundColor" value="#000" title="Dots Color">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="input-group">
+                                                <span class="input-group-text" id="inputGroupPrepend">Width</span>
+                                                <input type="number" class="form-control" id="input-Width" title="Width">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="input-group">
+                                                <span class="input-group-text" id="inputGroupPrepend">Height</span>
+                                                <input type="number" class="form-control" id="input-Height" title="Height">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="input-group">
+                                                <span class="input-group-text" id="inputGroupPrepend">Logo</span>
+                                                <select class="form-select" id="select-Logo" required>
+                                                    <option selected value="square">1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="input-group">
+                                                <span class="input-group-text" id="inputGroupPrepend">Logo Size</span>
+                                                <input type="number" class="form-control" id="input-LogoSize" min="0" max="1" step="0.1" value="0.5">
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
-                            <div class="col-md-3">
-                                <div class="input-group">
-                                    <span class="input-group-text" id="inputGroupPrepend">Width</span>
-                                    <input type="number" class="form-control" id="input-Width" title="Width">
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Dots Options
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionOptions">
+                                <div class="accordion-body">
+                                    <form class="row col-12 needs-validation g-2" novalidate>
+                                        <div class="col-md-5">
+                                            <div class="input-group">
+                                                <span class="input-group-text" id="inputGroupPrepend">Style</span>
+                                                <select class="form-select" id="select-DotsStyle" required>
+                                                    <option selected value="square">Square</option>
+                                                    <option value="dots">Dots</option>
+                                                    <option value="rounded">Rounded</option>
+                                                    <option value="extra-rounded">Extra Rounded</option>
+                                                    <option value="classy">Classy</option>
+                                                    <option value="classy-rounded">Classy Rounded</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="input-group">
+                                                <span class="input-group-text" id="inputGroupPrepend">Color</span>
+                                                <input type="color" class="form-control form-control-color" id="input-DotsColor" value="#000" title="Dots Color">
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
-                            <div class="col-md-3">
-                                <div class="input-group">
-                                    <span class="input-group-text" id="inputGroupPrepend">Height</span>
-                                    <input type="number" class="form-control" id="input-Height" title="Height">
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Corners Square Options
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionOptions">
+                                <div class="accordion-body">
+                                    <form class="row col-12 needs-validation g-2" novalidate>
+                                        <div class="col-md-5">
+                                            <div class="input-group">
+                                                <span class="input-group-text" id="inputGroupPrepend">Style</span>
+                                                <select class="form-select" id="select-CornersSquareStyle" required>
+                                                    <option selected value="square">Square</option>
+                                                    <option value="dots">Dots</option>
+                                                    <option value="extra-rounded">Extra Rounded</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="input-group">
+                                                <span class="input-group-text" id="inputGroupPrepend">Color</span>
+                                                <input type="color" class="form-control form-control-color" id="input-CornersSquareColor" value="#000" title="Dots Color">
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
-                            <div class="col-md-3">
-                                <div class="input-group">
-                                    <span class="input-group-text" id="inputGroupPrepend">Logo</span>
-                                    <select class="form-select" id="select-Logo" required>
-                                        <option selected value="square">1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                    </select>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    Corners Dot Options
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionOptions">
+                                <div class="accordion-body">
+                                    <form class="row col-12 needs-validation g-2" novalidate>
+                                        <div class="col-md-5">
+                                            <div class="input-group">
+                                                <span class="input-group-text" id="inputGroupPrepend">Style</span>
+                                                <select class="form-select" id="select-CornersDotStyle" required>
+                                                    <option selected value="square">Square</option>
+                                                    <option value="dots">Dots</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="input-group">
+                                                <span class="input-group-text" id="inputGroupPrepend">Color</span>
+                                                <input type="color" class="form-control form-control-color" id="input-CornersDotColor" value="#000" title="Dots Color">
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-12 col-md-12 col-lg-8 col-xl-8 pt-4 d-flex justify-content-start">
-                        <label for="DotsOption"><h4>Dots</h4></label>
-                    </div>
-                    <div id="DotsOption" class="col-12 col-md-12 col-lg-8 col-xl-8 pt-1 d-flex justify-content-start">
-                        <form class="row col-12 needs-validation g-2" novalidate>
-                            <div class="col-md-5">
-                                <div class="input-group">
-                                    <span class="input-group-text" id="inputGroupPrepend">Style</span>
-                                    <select class="form-select" id="select-DotsStyle" required>
-                                        <option selected value="square">Square</option>
-                                        <option value="dots">Dots</option>
-                                        <option value="rounded">Rounded</option>
-                                        <option value="extra-rounded">Extra Rounded</option>
-                                        <option value="classy">Classy</option>
-                                        <option value="classy-rounded">Classy Rounded</option>
-                                    </select>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFive">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                    Other Options
+                                </button>
+                            </h2>
+                            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionOptions">
+                                <div class="accordion-body">
+                                    <form class="row col-12 needs-validation g-2" novalidate>
+                                        <div class="col-md-5">
+                                            <div class="input-group">
+                                                <span class="input-group-text" id="inputGroupPrepend">Type Number</span>
+                                                <input type="number" class="form-control" id="input-TypeNumber" min="2" max="40">
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="input-group">
-                                    <span class="input-group-text" id="inputGroupPrepend">Color</span>
-                                    <input type="color" class="form-control form-control-color" id="input-DotsColor" value="#000" title="Dots Color">
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-12 col-md-12 col-lg-8 col-xl-8 pt-4 d-flex justify-content-start">
-                        <label for="CornersSquareOption"><h4>Corners Square</h4></label>
-                    </div>
-                    <div class="col-12 col-md-12 col-lg-8 col-xl-8 pt-1 d-flex justify-content-start">
-                        <form class="row col-12 needs-validation g-2" novalidate>
-                            <div class="col-md-5">
-                                <div class="input-group">
-                                    <span class="input-group-text" id="inputGroupPrepend">Style</span>
-                                    <select class="form-select" id="select-CornersSquareStyle" required>
-                                        <option selected value="square">Square</option>
-                                        <option value="dots">Dots</option>
-                                        <option value="extra-rounded">Extra Rounded</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="input-group">
-                                    <span class="input-group-text" id="inputGroupPrepend">Color</span>
-                                    <input type="color" class="form-control form-control-color" id="input-CornersSquareColor" value="#000" title="Dots Color">
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-12 col-md-12 col-lg-8 col-xl-8 pt-4 d-flex justify-content-start">
-                        <label for="CornersDotOption"><h4>Corners Dot</h4></label>
-                    </div>
-                    <div class="col-12 col-md-12 col-lg-8 col-xl-8 pt-1 d-flex justify-content-start">
-                        <form class="row col-12 needs-validation g-2" novalidate>
-                            <div class="col-md-5">
-                                <div class="input-group">
-                                    <span class="input-group-text" id="inputGroupPrepend">Style</span>
-                                    <select class="form-select" id="select-CornersDotStyle" required>
-                                        <option selected value="square">Square</option>
-                                        <option value="dots">Dots</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="input-group">
-                                    <span class="input-group-text" id="inputGroupPrepend">Color</span>
-                                    <input type="color" class="form-control form-control-color" id="input-CornersDotColor" value="#000" title="Dots Color">
-                                </div>
-                            </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="row justify-content-center">
                 <div class="col-12 d-flex pt-2 justify-content-center">
-                    <button id="button-QRGenerate" class="btn btn-success">生成 <i class="fas fa-qrcode"></i> Code</button>
+                    <button id="button-QRShare" class="btn btn-primary m-1" data-bs-toggle="modal" data-bs-target="#shareModal">
+                        <i class="fas fa-share-alt"></i>
+                        Share
+                    </button>
+                    <button id="button-QRGenerate" class="btn btn-success m-1">
+                        Update <i class="fas fa-qrcode"></i> Code
+                    </button>
                 </div>
             </div>
             <div class="row justify-content-center">
                 <div class="col-12 col-md-6 pt-2 d-flex justify-content-center">
                     <div class="row justify-content-center">
-                        <div id="QRCode" class="rounded col-12" style="transition: opacity 0.25 linear;"></div>
+                        <figure id="QRCode" class="figure rounded m-1 col-12 d-flex justify-content-center" style="transition: opacity 0.25 linear;">
+                        </figure>
                     </div>
                 </div>
             </div>
             <div class="row justify-content-center">
-                <div class="row col-12 col-md-12 col-lg-8 col-xl-8 d-flex pt-2 g-2 justify-content-center">
-                    <div class="col-md-2 justify-content-center">
-                        <div class="btn-group">
-                            <button id="button-QRShare" class="btn btn-primary"><i class="fas fa-share-alt"></i>分享</button>
-                        </div>
-                    </div>
-                    <div class="col-md-3 justify-content-center">
+                <div class="row col-12 col-md-12 col-lg-8 col-xl-8 d-flex pt-2 justify-content-center">
+                    <div class="col-9 col-sm-6 col-md-5 justify-content-center">
                         <div class="input-group">
-                            <button id="button-QRDownload" class="btn btn-danger"><i class="fas fa-download"></i>下載</button>
+                            <button id="button-QRDownload" class="btn btn-danger"><i class="fas fa-download"></i> Download</button>
                             <select class="form-select btn btn-outline-danger" id="select-QRDoenloadType">
                             </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pb-2">
+
+            </div>
+
+
+
+            <!-- disable -->
+            <div class="modal fade" id="shareModal" tabindex="-1" aria-labelledby="shareModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="shareModalLabel"><i class="fas fa-share-alt-square fa-lg text-primary"></i> Share My Design!~</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="share-url" class="col-form-label">My Design Link <i class="fas fa-pen" style="color: #7d5fff;"></i></label>
+                                    <div class="input-group">
+                                        <input type="link" class="form-control" id="share-url" readonly>
+                                        <button type="button" class="btn btn-outline-indigo" id="copy_share-url" data-clipboard-target="#share-url"><i class="fas fa-copy"></i></button>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="m-0 d-flex justify-content-center">
+                                    <picture id="qr_picture">
+
+                                    </picture>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -208,8 +303,11 @@
     <script type="text/javascript" src="./js/jquery.min.js"></script>
     <script type="text/javascript" src="./js/qr-code-styling.js"></script>
     <script src="./js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
     <script>
         const qrCode = new QRCodeStyling();
+        const qrCode_share = new QRCodeStyling();
+        let qrSitting = {};
         let url = new URL(window.location);
 
         pre_generateQR = function() {
@@ -226,6 +324,8 @@
             options.width = $("#input-Width").val();
             options.height = $("#input-Height").val();
             options.image = $("#select-Logo").val();
+            options.imageSize = $("#input-LogoSize").val();
+            options.typeNumber = $("#input-TypeNumber").val();
             options.dotsStyle = $("#select-DotsStyle").val();
             options.dotsColor = $("#input-DotsColor").val();
             options.cornersSquareStyle = $("#select-CornersSquareStyle").val();
@@ -249,15 +349,14 @@
         }
 
         generateQR = function (options) {
-            console.log("generateQR - options", options);
-            qrCode.update({
+            // console.log("generateQR - options", options);
+            qrSitting = {
                 width: options.width,
                 height: options.height,
-                type: "canvas",
+                type: "svg",
                 data: options.data,
-                image: options.image,
                 qrOptions: {
-                    typeNumber: 5,
+                    typeNumber: options.typeNumber,
                     errorCorrectionLevel: options.eCL
                 },
                 dotsOptions: {
@@ -267,11 +366,6 @@
                 backgroundOptions: {
                     color: options.backgroundColor,
                 },
-                imageOptions: {
-                    imageSize: 0.5,
-                    crossOrigin: "anonymous",
-                    margin: 3
-                },
                 cornersSquareOptions: {
                     color: options.cornersSquareColor,
                     type: options.cornersSquareStyle
@@ -280,8 +374,24 @@
                     color: options.cornersDotColor,
                     type: options.cornersDotStyle
                 }
-            });
+            };
+
+            if(options.image !== "null") {
+                qrSitting.image = options.image;
+                qrSitting.imageOptions = {
+                    imageSize: options.imageSize,
+                    crossOrigin: "anonymous",
+                    margin: 3
+                };
+            }else{
+                qrSitting.image = null;
+            }
+
+            qrCode.update(qrSitting);
             qrCode.append(document.getElementById("QRCode"));
+
+            // $("#QRCode svg").attr("width", "100%");
+            // $("#QRCode svg").attr("height", "100%");
         }
 
         downloadQR = function() {
@@ -289,17 +399,26 @@
             qrCode.download({ name: "qr", extension: $("#select-QRDoenloadType").val() });
         }
 
-        QRShare = function () {
-            console.log();
-            var newUrl = url.hostname + url.pathname + "?";
-            var uri = "?";
+        QRShare = function (mdoal_shareModal) {
+            console.log("[Debug] QRShare", mdoal_shareModal)
+
+            var newUrl = url.hostname + url.pathname;
+            var uri = "";
             for(var i in items) {
-                console.log(items[i]);
                 if(items[i].type === "input" || items[i].type === "select"){
-                    uri += `${i}=${encodeURIComponent($(`#${items[i].type}-${i}`).val())}&`;
+                    uri += `${(uri.length===0 ? "?" : "&")}${i}=${encodeURIComponent($(`#${items[i].type}-${i}`).val())}`;
                 }
             }
-            console.log(url + uri);
+            // console.log("uri_last", uri);
+            console.log(uri);
+            var modalLink = mdoal_shareModal.querySelector('.modal-body input');
+            modalLink.value = url + uri;
+
+
+            var qrSitting_png = qrSitting;
+            qrSitting_png.type = "canvas";
+            qrCode_share.update(qrSitting_png);
+            qrCode_share.append(document.getElementById("qr_picture"));
         }
 
         const items = {
@@ -335,12 +454,12 @@
                 event: {
                     "onchange": () => pre_generateQR,
                 },
-                options: {
-                    "無": null,
-                    "1": "./img/beto_logo.png",
-                    "2": "./img/beto_logo_W.png",
-                    "3": "./img/beto_logo2.png",
-                },
+                options: [
+                    {key: "無", value: null},
+                    {key: "1", value: "./img/beto_logo.png", isSelect: true},
+                    {key: "2", value: "./img/beto_logo_W.png"},
+                    {key: "3", value: "./img/beto_logo2.png"},
+                ],
             }, 
             "DotsStyle": {
                 type: "select", 
@@ -398,18 +517,34 @@
             },
             "QRDoenloadType": {
                 type: "select",
-                options: {
-                    "Png": "png", 
-                    "Jpeg": "jpeg", 
-                    "Webp": "webp", 
-                    "Svg": "svg"
-                },
+                options: [
+                    {key: "Png", value: "png", isSelect: true}, 
+                    {key: "Jpeg", value: "jpeg"}, 
+                    {key: "Webp", value: "webp"}, 
+                    {key: "Svg", value: "svg"}
+                ],
             },
             "QRShare": {
                 type: "button",
                 event: {
-                    "onclick": () => QRShare,
                 },
+            },
+            "TypeNumber": {
+                type: "input", 
+                definedValue: "5",
+                attr: {
+                    "value": "5",
+                },
+                event: {
+                    "onchange": () => pre_generateQR
+                }
+            },
+            "LogoSize": {
+                type: "input",
+                definedValue: "0.5",
+                event: {
+                    "onchange": () => pre_generateQR
+                }
             },
         };
 
@@ -423,9 +558,17 @@
             set_itemsEvents();
 
             pre_generateQR();
+
+            var shareModal = document.getElementById("shareModal");
+            var clipboard = new ClipboardJS('#copy_share-url');
+
+            shareModal.addEventListener("show.bs.modal", function (event) {
+                
+                QRShare(shareModal);
+            });
         });
 
-        set_itemsSitting = function () {
+        set_itemsSitting = function (type) {
             for(var item_key in items) {
                 if(typeof items[item_key].definedValue !== "undefined") {
                     // console.log("setValue", items[item_key].definedValue);
@@ -433,8 +576,9 @@
                 }
                 if(typeof items[item_key].options !== "undefined"){
                     $(`#${items[item_key].type}-${item_key}`).empty();
-                    for(var key in items[item_key].options){
-                        $(`#${items[item_key].type}-${item_key}`).append(`<option value="${items[item_key].options[key]}">${key}</option>`)
+                    for(var i in items[item_key].options){
+                        $(`#${items[item_key].type}-${item_key}`).append(`<option value="${items[item_key].options[i].value}"${(items[item_key].options[i].isSelect ? " selected" : "")}>${items[item_key].options[i].key}</option>`)
+                        // $(`#${items[item_key].type}-${item_key}`).append(`<option value="${items[item_key].options[key]}">${key}</option>`)
                     }
                 }
             }
