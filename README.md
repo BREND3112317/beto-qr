@@ -1,4 +1,6 @@
 # BETO-QR
+## 介紹
+個性化QRCode生成使用工具
 ## 技術
 ### Javascript
 - JQuery
